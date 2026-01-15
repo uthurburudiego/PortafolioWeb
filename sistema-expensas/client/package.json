@@ -1,5 +1,5 @@
 {
-  "name": "control-gastos-contextapi",
+  "name": "sistema-expensas",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,22 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.9",
-    "@heroicons/react": "^2.2.0",
-    "@tailwindcss/vite": "^4.1.17",
-    "prop-types": "^15.8.1",
+    "@tailwindcss/vite": "^4.1.18",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "mongoose": "^9.1.2",
     "react": "^19.2.0",
-    "react-calendar": "^6.0.0",
-    "react-circular-progressbar": "^2.2.0",
-    "react-date-picker": "^12.0.1",
     "react-dom": "^19.2.0",
-    "react-swipeable-list": "^1.10.0",
-    "tailwindcss": "^4.1.17",
-    "uuid": "^13.0.0"
+    "react-hot-toast": "^2.6.0",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@types/node": "^24.10.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.6",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",

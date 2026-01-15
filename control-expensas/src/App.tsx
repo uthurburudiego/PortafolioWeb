@@ -1,17 +1,40 @@
-import OwnerForm from "./components/OwnerForm"
+import BudgetForm from "./components/BudgetForm"
+import BudgetTracker from "./components/BudgetTracker"
+import { useBudget } from "./hooks/useBudget"
+import { useEffect, useMemo } from "react"
+import ExpenseModal from "./components/ExpenseModal"
+import ExpenseList from "./components/ExpenseList"
+import FilterByCategory from "./components/FilterByCategory"
 
 
 function App() {
+  const {state} = useBudget()
+  const isValidBudget = useMemo(()=> state.budget > 0, [state.budget])
+
+  useEffect(() => {
+    localStorage.setItem("budget", state.budget.toString())
+    localStorage.setItem("expenses", JSON.stringify(state.expenses))
+  }, [state])
 
   return (
     <>
-    <header className="bg-green-800 py-8 max-h-72">
-      <h1 className=" uppercase text-center font-black text-4xl text-white">Control de Expensas </h1>
+    <header className="bg-green-600 py-8 max-h-72">
+      <h1 className=" uppercase text-center font-black text-4xl text-white">Registro de Canon </h1>
     </header>
 
-     <div className="max-w-3x1 max-auto bg-white shadow-lg rounded-lg mt-10 p-10">
-      <OwnerForm />
-    </div>
+      <div className=" flex items-center justify-center bg-gray-100 mt-10 ">
+        <div className="max-w-3xl w-full bg-white shadow-lg rounded-lg p-10">
+          { isValidBudget ? <BudgetTracker/> : <BudgetForm />}
+        </div>
+      </div>
+      {isValidBudget && (
+        <main className=" max-w-3xl mx-auto py-10">
+          <FilterByCategory/>
+          <ExpenseList/>
+          <ExpenseModal/>
+        </main>
+      
+      )}
     </>
   )
 }
